@@ -18,8 +18,8 @@ End Property
 ''''''''''''''''''''''
 ' ID property
 ''''''''''''''''''''''
-Public Property Get Id() As Long
-    Id = m_pDevMode
+Public Property Get ID() As Long
+    ID = m_pDevMode
 End Property
 ''''''''''''''''''''''
 ' PrinterName property

@@ -11,13 +11,13 @@ Private Sub Form_Click()
     'Dim frmName As String
     'MsgBox "form name = " & frmCurrentForm.Name
     
-    If Len(Me.InstanceID) > 0 Then
+    If Len(Me.InstanceId) > 0 Then
     
         'MG syntax below works for main form->subform1
         'Forms!frm_PROV_Fax_Documents_Grid_View.lstSelectedClaims.AddItem Me.InstanceID & ";" & Me.LetterType & ";" & Me.LetterReqDt & ";" & Me.MaxRefLink
         
         'MG syntax below works for main form->subform1->subform2
-        Me.Parent!lstSelectedClaims.AddItem Me.InstanceID & ";" & Me.LetterType & ";" & Me.LetterReqDt & ";" & Me.MaxRefLink
+        Me.Parent!lstSelectedClaims.AddItem Me.InstanceId & ";" & Me.LetterType & ";" & Me.LetterReqDt & ";" & Me.MaxRefLink
 
     End If
     

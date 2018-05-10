@@ -350,7 +350,7 @@ Dim sName As String
     sName = oRs("ItemName").Value
     
     If Not coCurrentItem Is Nothing Then
-        If coCurrentItem.Id <> lId Then
+        If coCurrentItem.ID <> lId Then
             Set coCurrentItem = New clsBOLD_LetterRuleItemDetail
             Stop ' KD: Comeback - what about the list item object..
             Call coCurrentItem.LoadFromId(lId)
@@ -388,13 +388,13 @@ Dim oRs As DAO.RecordSet
 'Stop
 
     ' Can I cound on the current object to be the correct one?
-    Debug.Print coCurrentItem.Id
+    Debug.Print coCurrentItem.ID
 '    Stop
     ' maybe I need to use txtLocalId
 
 '    Set oRs = Me.RecordsetClone
 
-    oFrm.InitData (coCurrentItem.Id)
+    oFrm.InitData (coCurrentItem.ID)
     oFrm.visible = True
     
     While oFrm.visible = True
@@ -422,7 +422,7 @@ Dim oRs As DAO.RecordSet
 '    Stop
         If oRs.AbsolutePosition > -1 Then
             If Not coCurrentItem Is Nothing Then
-                If coCurrentItem.Id = oRs("LocalId").Value Then
+                If coCurrentItem.ID = oRs("LocalId").Value Then
                     GoTo Block_Exit ' already loaded..
                 End If
             End If

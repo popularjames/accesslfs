@@ -84,10 +84,10 @@ Public Property Get ClassName() As String
 End Property
 
         '' Just an alias for ease of use!
-    Public Property Get Id() As Long
-        Id = ManFilterID
+    Public Property Get ID() As Long
+        ID = ManFilterID
     End Property
-    Public Property Let Id(lNewId As Long)
+    Public Property Let ID(lNewId As Long)
         ManFilterID = lNewId
     End Property
 
@@ -455,7 +455,7 @@ Dim oRs As ADODB.RecordSet
     With oAdo
         .ConnectionString = DataConnString
         .SQLTextType = sqltext
-        .sqlString = "SELECT * FROM " & oFltrOption.SourceTableName & " WHERE " & csIDFIELDNAME & " = " & Me.Id & " ORDER BY OptionId "
+        .sqlString = "SELECT * FROM " & oFltrOption.SourceTableName & " WHERE " & csIDFIELDNAME & " = " & Me.ID & " ORDER BY OptionId "
         Set oRs = .ExecuteRS
         If oRs.BOF And oRs.EOF Then
             ' nothing retrieved
@@ -586,12 +586,12 @@ Dim strProcName As String
     '           oFltrOption.OptionId = Format(oFltrOption.ID, "000")
     End If
 
-    If cdtcFilterOptions.Exists(oFltrOption.Id) = True Then
+    If cdtcFilterOptions.Exists(oFltrOption.ID) = True Then
         Stop
         ' reset it
-        Set cdtcFilterOptions.Item(oFltrOption.Id) = oFltrOption
+        Set cdtcFilterOptions.Item(oFltrOption.ID) = oFltrOption
     End If
-    cdtcFilterOptions.Add oFltrOption.Id, oFltrOption
+    cdtcFilterOptions.Add oFltrOption.ID, oFltrOption
     
     oFltrOption.SaveNow
 
@@ -646,7 +646,7 @@ Dim oAdo As clsADO
         .SQLTextType = StoredProc
         .sqlString = "usp_LETTER_Automation_ManualFiltersDel"
         .Parameters.Refresh
-        .Parameters("@pManFilterId") = Me.Id
+        .Parameters("@pManFilterId") = Me.ID
         .Execute
         If Nz(.Parameters("@pErrMsg").Value, "") <> "" Then
             Stop
@@ -738,7 +738,7 @@ Dim oFltrItm As clsFilterOption
     For Each vVar In cdtcFilterOptions.Keys
         If TypeName(cdtcFilterOptions.Item(vVar)) = "clsFilterOption" Then
             Set oFltrItm = cdtcFilterOptions.Item(vVar)
-            If oFltrItm.Id = oFltrOpt.Id Then
+            If oFltrItm.ID = oFltrOpt.ID Then
 '                Stop
                 cdtcFilterOptions.Remove (vVar)
                 ' delete it from the database too

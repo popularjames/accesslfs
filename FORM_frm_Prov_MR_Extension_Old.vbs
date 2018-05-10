@@ -81,7 +81,7 @@ Private Sub cmdSave_Click()
 
 End Sub
 
-Function cmdSaveClaims(InstanceID As String, CnlyClaimNum As String, ReasonDesc As String, Note As String, DaysExtend As Integer)
+Function cmdSaveClaims(InstanceId As String, CnlyClaimNum As String, ReasonDesc As String, Note As String, DaysExtend As Integer)
 
     Dim MyCodeAdo As New clsADO
     Dim cmd As ADODB.Command
@@ -93,7 +93,7 @@ Function cmdSaveClaims(InstanceID As String, CnlyClaimNum As String, ReasonDesc 
     cmd.commandType = adCmdStoredProc
     cmd.CommandText = "usp_PROV_MR_Extension_Claims_Process"
     cmd.Parameters.Refresh
-    cmd.Parameters("@pInstanceID") = InstanceID
+    cmd.Parameters("@pInstanceID") = InstanceId
     cmd.Parameters("@pCnlyClaimNum") = CnlyClaimNum
     cmd.Parameters("@pReasonDesc") = ReasonDesc
     cmd.Parameters("@pNote") = Note

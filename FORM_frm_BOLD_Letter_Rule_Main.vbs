@@ -181,7 +181,7 @@ Dim oLetterDetails As clsBOLD_LetterRuleItemDetails
         Set coLetterRule = New clsBOLD_LetterRule
     End If
     
-    If coLetterRule.Id = 0 Then
+    If coLetterRule.ID = 0 Then
         Stop
         If coLetterRule.CreateNew(Me.txtRuleName, CLng("0" & Nz(Me.txtQty, "")), Me.cmbWhatToLimit, Me.cmbFinalFormat) < 1 Then
             Stop
@@ -304,7 +304,7 @@ Dim oDtls As clsBOLD_LetterRuleItemDetails
     If coLetterRule Is Nothing Then
         GoTo Block_Exit
     End If
-    If coLetterRule.Id = 0 Then
+    If coLetterRule.ID = 0 Then
         Stop
         GoTo Block_Exit
     End If
@@ -348,7 +348,7 @@ Stop
     If coLetterRule Is Nothing Then
         GoTo Block_Exit
     End If
-    If coLetterRule.Id = 0 Then
+    If coLetterRule.ID = 0 Then
         Stop
         GoTo Block_Exit
     End If

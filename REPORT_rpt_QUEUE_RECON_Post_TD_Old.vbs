@@ -2903,8 +2903,8 @@ Private Sub Report_Load()
    'MG 5/6/20114 Changed POST TD language content for Pre-Pay vs Post-Pay
    'Looks like the Report_Open event comes before Report_Load, so this method will work.
     
-    Me.txtAdjReviewtype.visible = False 'MG do display adj review type to providers
-    If Me.txtAdjReviewtype.Value = "PRP" Then
+    Me.txtAdjReviewType.visible = False 'MG do display adj review type to providers
+    If Me.txtAdjReviewType.Value = "PRP" Then
         lblADRRequestDate.visible = False
         txtLetterReqDt.visible = False
     Else

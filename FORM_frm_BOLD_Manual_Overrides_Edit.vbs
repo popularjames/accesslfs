@@ -61,7 +61,7 @@ Dim strProcName As String
     If coManFilter Is Nothing Then
         GoTo Block_Exit
     End If
-    If coManFilter.Id = 0 Then
+    If coManFilter.ID = 0 Then
         Stop
         GoTo Block_Exit
     End If
@@ -100,7 +100,7 @@ Dim oAdo As clsADO
         .SQLTextType = StoredProc
         .sqlString = "usp_LETTER_AUtomation_ManualFilterEditBkup"
         .Parameters.Refresh
-        .Parameters("@pManFilterid") = coManFilter.Id
+        .Parameters("@pManFilterid") = coManFilter.ID
         .Execute
         If Nz(.Parameters("@pErrMsg").Value, "") <> "" Then
             Stop
@@ -130,7 +130,7 @@ Dim oAdo As clsADO
         .SQLTextType = StoredProc
         .sqlString = "usp_LETTER_AUtomation_ManualFilterEditRollback"
         .Parameters.Refresh
-        .Parameters("@pManFilterid") = coManFilter.Id
+        .Parameters("@pManFilterid") = coManFilter.ID
         .Execute
         If Nz(.Parameters("@pErrMsg").Value, "") <> "" Then
             Stop
@@ -352,7 +352,7 @@ MakeNew:
     
     Set oLI = oLV.ListItems.Add(, , Format(coCurFilterOpt.OptionID, "0##"))
 '    oLI.Tag = CStr(coManFilter.ID)
-    oLI.Tag = CStr(coCurFilterOpt.Id)
+    oLI.Tag = CStr(coCurFilterOpt.ID)
     
     If Me.cmbAndOrNot.visible = True Then
         oLI.SubItems(1) = Nz(Me.cmbAndOrNot, "AND")
@@ -626,7 +626,7 @@ Dim oFltrOpt As clsFilterOption
 'Stop
         With oAdo
             .Parameters.Refresh
-            .Parameters("@pRID") = oFltrOpt.Id
+            .Parameters("@pRID") = oFltrOpt.ID
             .Parameters("@pManFilterId") = oFltrOpt.ManFilterID
             .Parameters("@pUnderlyingOptionId") = oFltrOpt.UnderlyingOptionId
             .Parameters("@pOptionId") = oFltrOpt.OptionID
@@ -880,7 +880,7 @@ Dim lIdToLoad As Long
     End If
     
         ' Force it to refresh
-    lIdToLoad = coManFilter.Id
+    lIdToLoad = coManFilter.ID
     Set coManFilter = New clsFilter
     coManFilter.LoadFromId (lIdToLoad)
     
@@ -1253,7 +1253,7 @@ MakeNew:
     
     coCurFilterOpt.OptionID = Format(iCnt, "000")
     
-    oLI.Tag = CStr(coManFilter.Id)
+    oLI.Tag = CStr(coManFilter.ID)
     
     If Me.cmbAndOrNot.visible = True Then
         coCurFilterOpt.Inclusion = Nz(Me.cmbAndOrNot, "AND")
@@ -1419,7 +1419,7 @@ Dim iCnt As Integer
     
 
 '    Set oLI = oLV.ListItems.Add(, , Format(iCnt, "0##"))
-    oLI.Tag = CStr(oFltrOption.Id)
+    oLI.Tag = CStr(oFltrOption.ID)
     
     oFltrOption.Save = True ' it's in the list so we will save it
     

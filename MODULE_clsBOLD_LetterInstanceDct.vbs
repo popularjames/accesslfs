@@ -177,16 +177,16 @@ Dim strProcName As String
         oLetter.BatchID = Me.BatchID
     End If
     
-    If cdctLetters.Exists(oLetter.InstanceID) = True Then
-        Set cdctLetters.Item(oLetter.InstanceID) = oLetter
+    If cdctLetters.Exists(oLetter.InstanceId) = True Then
+        Set cdctLetters.Item(oLetter.InstanceId) = oLetter
     Else
-        cdctLetters.Add oLetter.InstanceID, oLetter
+        cdctLetters.Add oLetter.InstanceId, oLetter
     End If
     
-    If cdctLetterPageCnt.Exists(oLetter.InstanceID) = True Then
-        cdctLetterPageCnt.Item(oLetter.InstanceID) = oLetter.PageCount
+    If cdctLetterPageCnt.Exists(oLetter.InstanceId) = True Then
+        cdctLetterPageCnt.Item(oLetter.InstanceId) = oLetter.PageCount
     Else
-        cdctLetterPageCnt.Add oLetter.InstanceID, oLetter.PageCount
+        cdctLetterPageCnt.Add oLetter.InstanceId, oLetter.PageCount
     End If
     
     UpdateLetter = True
@@ -208,7 +208,7 @@ Dim oLtr As clsLetterInstance
     If cdctLetters.Exists(sInstanceId) = False Then
         Set oLtr = New clsLetterInstance
         With oLtr
-            .InstanceID = sInstanceId
+            .InstanceId = sInstanceId
             .LetterQueueStatus = sQueueStatus
             .ProvNum = sProvNum
             .LetterType = UCase(Trim(sLetterType))

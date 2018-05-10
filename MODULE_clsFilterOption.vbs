@@ -92,10 +92,10 @@ Public Property Get ClassName() As String
 End Property
 
         '' Just an alias for ease of use!
-    Public Property Get Id() As Long
-        Id = FilterOptionID
+    Public Property Get ID() As Long
+        ID = FilterOptionID
     End Property
-    Public Property Let Id(lNewId As Long)
+    Public Property Let ID(lNewId As Long)
         FilterOptionID = lNewId
     End Property
 
@@ -545,7 +545,7 @@ Dim oAdo As clsADO
         .SQLTextType = StoredProc
         .sqlString = "usp_LETTER_Automation_ManualFiltersOptionDel"
         .Parameters.Refresh
-        .Parameters("@pRID") = Me.Id
+        .Parameters("@pRID") = Me.ID
         .Execute
         If Nz(.Parameters("@pErrMsg").Value, "") <> "" Then
             Stop
@@ -576,7 +576,7 @@ Dim strProcName As String
 
     strProcName = ClassName & ".LoadFromID"
     coSourceTable.IdIsString = False
-    Id = lManFilterRID   ' if we did this we'
+    ID = lManFilterRID   ' if we did this we'
     
 '    coSourceTable.ConnectionString = GetConnectString("CMS_AUDITORS_CLAIMS")
 '    coSourceTable.ConnectionString = DataConnString

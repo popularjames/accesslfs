@@ -84,10 +84,10 @@ Public Property Let DocID(iDocID As Integer)
     ciRowID = iDocID
 End Property
         '' Just an alias for ease of use!
-    Public Property Get Id() As Integer
-        Id = DocID
+    Public Property Get ID() As Integer
+        ID = DocID
     End Property
-    Public Property Let Id(iNewId As Integer)
+    Public Property Let ID(iNewId As Integer)
         DocID = iNewId
     End Property
         '' Just an alias for ease of use!
@@ -635,7 +635,7 @@ Dim strProcName As String
     coSourceTable.IdIsString = False
 '       Debug.Assert iDocRowId <> 7073
     
-    Id = lDocRowId
+    ID = lDocRowId
     LoadFromId = coSourceTable.LoadFromId(lDocRowId)
     WasInitialized = LoadFromId
 
@@ -698,7 +698,7 @@ Dim sSql As String
 
     sSql = "SELECT R.ConceptReferenceId, RP.PayerNameID, RP.ConceptReferencePayerId " & _
         "   FROM Concept_Submission_References R LEFT JOIN Concept_Submission_ReferencePayers RP ON R.ConceptReferenceId = RP.ConceptReferenceID" & _
-        " Where r.ReferenceRowId = " & CStr(Me.Id)
+        " Where r.ReferenceRowId = " & CStr(Me.ID)
     
     Set oAdo = New clsADO
     With oAdo
@@ -707,7 +707,7 @@ Dim sSql As String
         .sqlString = sSql
         Set oRs = .ExecuteRS
         If .GotData = False Then
-            LogMessage strProcName, "ERROR", "No data returned for this doc type: " & Me.CnlyAttachType & " for concept: " & Me.ConceptID, CStr(Me.Id), , Me.ConceptID
+            LogMessage strProcName, "ERROR", "No data returned for this doc type: " & Me.CnlyAttachType & " for concept: " & Me.ConceptID, CStr(Me.ID), , Me.ConceptID
             GoTo Block_Exit
         End If
     End With

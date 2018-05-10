@@ -85,10 +85,10 @@ Public Property Let ConceptReqId(iConceptReqId As Integer)
 '    SetTableValue "ConceptReqId", iConceptReqId, True
 End Property
         '' Just an alias for ease of use!
-    Public Property Get Id() As Integer
-        Id = ConceptReqId
+    Public Property Get ID() As Integer
+        ID = ConceptReqId
     End Property
-    Public Property Let Id(intNewId As Integer)
+    Public Property Let ID(intNewId As Integer)
         ConceptReqId = intNewId
     End Property
 
@@ -307,7 +307,7 @@ Dim iIndex As Integer
     
     For iIndex = 1 To oCollection.Count
         Set ovarColItem = oCollection.Item(iIndex)
-        If ovarColItem.Id = varItemToRemove.Id Then
+        If ovarColItem.ID = varItemToRemove.ID Then
             Set ovarColItem = Nothing
             oCollection.Remove iIndex
             RemoveItemFromCollection = True
@@ -334,7 +334,7 @@ Dim intIndex As Integer
     
     For intIndex = 1 To ccolRequiredDocs.Count
         Set oCurDoc = New clsConceptReqDocType
-        oCurDoc.LoadFromId (ccolRequiredDocs(intIndex).Id)
+        oCurDoc.LoadFromId (ccolRequiredDocs(intIndex).ID)
 
 '        If oField.FieldID = oCurDoc.DocTypeId Then
 '            GetColIndexFromDoc = intIndex
@@ -362,7 +362,7 @@ Dim intIndex As Integer
     
     For intIndex = 1 To ccolRequiredDocs.Count
         Set oCurDoc = New clsConceptReqDocType
-        oCurDoc.LoadFromId (ccolRequiredDocs(intIndex).Id)
+        oCurDoc.LoadFromId (ccolRequiredDocs(intIndex).ID)
         If oCurDoc.DocTypeId = intFieldId Then
             GetColIndexFromFieldID = intIndex
             GoTo Block_Exit
@@ -489,8 +489,8 @@ Dim strProcName As String
         GoTo Block_Exit
     End If
     
-    Id = oRs(coSourceTable.IdFieldName).Value
-    LoadFromRS = coSourceTable.LoadFromId(Id)
+    ID = oRs(coSourceTable.IdFieldName).Value
+    LoadFromRS = coSourceTable.LoadFromId(ID)
     WasInitialized = LoadFromRS
 
     '' Now, need to get the Required document types and populate our collection
@@ -500,7 +500,7 @@ Block_Exit:
     Exit Function
 
 Block_Err:
-    FireError Err, strProcName, "SourceID: " & CStr(Id)
+    FireError Err, strProcName, "SourceID: " & CStr(ID)
     LoadFromRS = False
     GoTo Block_Exit
 End Function
@@ -513,7 +513,7 @@ Dim strProcName As String
 
     strProcName = ClassName & ".LoadFromID"
     
-    Id = lngRSourceId
+    ID = lngRSourceId
     LoadFromId = coSourceTable.LoadFromId(lngRSourceId)
     WasInitialized = LoadFromId
 
@@ -594,7 +594,7 @@ Dim oReqdDocType As clsConceptReqDocType
     With oAdo
         .ConnectionString = GetConnectString(csTableName)
         .SQLTextType = sqltext
-        .sqlString = "SELECT DocTypeId FROM v_ConceptRequirements WHERE ConceptReqId = " & CStr(Id)
+        .sqlString = "SELECT DocTypeId FROM v_ConceptRequirements WHERE ConceptReqId = " & CStr(ID)
         Set oRs = .ExecuteRS
         If .GotData = False Then
             GoTo Block_Exit
@@ -622,7 +622,7 @@ Block_Exit:
     Exit Sub
 
 Block_Err:
-    FireError Err, strProcName, "SourceID: " & CStr(Me.Id)
+    FireError Err, strProcName, "SourceID: " & CStr(Me.ID)
     GoTo Block_Exit
 End Sub
 

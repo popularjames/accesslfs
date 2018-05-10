@@ -68,10 +68,10 @@ Public Property Let NotificationID(iNotificationId As Integer)
     ciNotificationID = iNotificationId
 End Property
         '' Just an alias for ease of use!
-    Public Property Get Id() As Integer
-        Id = NotificationID
+    Public Property Get ID() As Integer
+        ID = NotificationID
     End Property
-    Public Property Let Id(iNewId As Integer)
+    Public Property Let ID(iNewId As Integer)
         NotificationID = iNewId
     End Property
 
@@ -456,7 +456,7 @@ Dim strProcName As String
 
     strProcName = ClassName & ".LoadFromID"
     coSourceTable.IdIsString = False
-    Id = lNotificationId
+    ID = lNotificationId
     LoadFromId = coSourceTable.LoadFromId(lNotificationId)
     WasInitialized = LoadFromId
     

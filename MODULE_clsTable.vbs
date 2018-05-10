@@ -56,11 +56,11 @@ Private cblnDao As Boolean
 Private cbLoadSingleRow As Boolean
 
 
-Public Property Get Id() As Integer
+Public Property Get ID() As Integer
 '    ciId = cdctTableVals.Item(IdFieldName).Value
-    Id = ciId
+    ID = ciId
 End Property
-Public Property Let Id(intNewId As Integer)
+Public Property Let ID(intNewId As Integer)
     ciId = intNewId
 End Property
 
@@ -231,7 +231,7 @@ End Function
                     If IdIsString = True Then
                         IDStr = oRs(sFieldName).Value
                     Else
-                        Id = oRs(sFieldName).Value
+                        ID = oRs(sFieldName).Value
                     End If
                 End If
             Next
@@ -295,7 +295,7 @@ Funct_Err:
                     End If
         Debug.Print CStr(iRecordCount) & "." & UCase(sFieldName) & " = (" & oRs(sFieldName).Value & ")"
                     If UCase(sFieldName) = UCase(IdFieldName) Then
-                        Id = oRs(sFieldName).Value
+                        ID = oRs(sFieldName).Value
                     End If
                 Next
                 If blnLoadOneRecordForSchema = True Then
@@ -338,7 +338,7 @@ Dim strProcName As String
             GoTo Funct_Exit
         End If
     Else
-        If Id < 1 Then  ' not initialized
+        If ID < 1 Then  ' not initialized
             Set GetTableValue = Nothing
             ' or,
             GetTableValue = ""
@@ -375,7 +375,7 @@ Dim sFldName As String
     If IdIsString = True Then
         If IDStr = "" Then GoTo Funct_Exit
     Else
-        If Id < 1 Then GoTo Funct_Exit
+        If ID < 1 Then GoTo Funct_Exit
     End If
 
     SetTableValue = True
@@ -482,7 +482,7 @@ End Function
         If IdIsString = True Then
             sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = '" & IDStr & "'"
         Else
-            sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = " & CStr(Id)
+            sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = " & CStr(ID)
         End If
     
     
@@ -574,7 +574,7 @@ Block_Err:
         If IdIsString = True Then
             sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = '" & IDStr & "'"
         Else
-            sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = " & CStr(Id)
+            sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = " & CStr(ID)
         End If
     
         Set oDb = CurrentDb()
@@ -702,7 +702,7 @@ End Function
             IDStr = ""
             sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = '" & IDStr & "'"
         Else
-            Id = 0
+            ID = 0
             sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = " & CStr(intID)
         End If
     
@@ -740,7 +740,7 @@ End Function
         If IdIsString = True Then
             IDStr = oRs(IdFieldName).Value
         Else
-            Id = oRs(IdFieldName).Value
+            ID = oRs(IdFieldName).Value
         End If
         AddNewIDDAO = oRs(IdFieldName).Value
         
@@ -794,7 +794,7 @@ Block_Err:
             sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = '" & IDStr & "'"
         Else
     Stop    ' wtf - how are we using the recordset before we open it?
-            Id = 0      ''oRs(sFieldName).Value
+            ID = 0      ''oRs(sFieldName).Value
             sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = " & CStr(intID)
         End If
     
@@ -834,7 +834,7 @@ Block_Err:
         If IdIsString = True Then
             IDStr = oRs(IdFieldName).Value
         Else
-            Id = oRs(IdFieldName).Value
+            ID = oRs(IdFieldName).Value
         End If
         AddNewIDADO = oRs(IdFieldName).Value
         
@@ -959,7 +959,7 @@ End Function
             RecordNameFieldName = strRecordNameFieldName
         End If
     
-        Id = lngId
+        ID = lngId
     
         sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = " & CStr(lngId)
         
@@ -1013,7 +1013,7 @@ Block_Err:
             RecordNameFieldName = strRecordNameFieldName
         End If
     
-        Id = lngId
+        ID = lngId
     
         sSql = "SELECT * FROM [" & TableName & "] WHERE [" & IdFieldName & "] = " & CStr(lngId)
         

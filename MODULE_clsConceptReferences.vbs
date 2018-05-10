@@ -72,10 +72,10 @@ Public Property Let DocID(iDocID As Integer)
     ciRowID = iDocID
 End Property
         '' Just an alias for ease of use!
-    Public Property Get Id() As Integer
-        Id = DocID
+    Public Property Get ID() As Integer
+        ID = DocID
     End Property
-    Public Property Let Id(iNewId As Integer)
+    Public Property Let ID(iNewId As Integer)
         DocID = iNewId
     End Property
         '' Just an alias for ease of use!
@@ -582,7 +582,7 @@ Dim strProcName As String
     coSourceTable.IdIsString = False
 '       Debug.Assert iDocRowId <> 7073
     
-    Id = lDocRowId
+    ID = lDocRowId
     LoadFromId = coSourceTable.LoadFromId(lDocRowId)
     WasInitialized = LoadFromId
 

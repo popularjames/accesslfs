@@ -74,10 +74,10 @@ Public Property Let DocTypeId(iDocTypeId As Integer)
 '    SetTableValue "DocTypeId", iDocTypeId, True
 End Property
         '' Just an alias for ease of use!
-    Public Property Get Id() As Integer
-        Id = DocTypeId
+    Public Property Get ID() As Integer
+        ID = DocTypeId
     End Property
-    Public Property Let Id(intNewId As Integer)
+    Public Property Let ID(intNewId As Integer)
         DocTypeId = intNewId
     End Property
 
@@ -553,7 +553,7 @@ Dim lngRsSourceId As Long
     lngRsSourceId = dctNamesToIds.Item(sDocTypeName)
 
     LoadFromDocName = coSourceTable.LoadFromId(lngRsSourceId)
-    Id = lngRsSourceId
+    ID = lngRsSourceId
     WasInitialized = LoadFromDocName
     
 Block_Exit:
@@ -573,7 +573,7 @@ Dim strProcName As String
 
     strProcName = ClassName & ".LoadFromID"
     
-    Id = lngRsSourceId
+    ID = lngRsSourceId
     LoadFromId = coSourceTable.LoadFromId(lngRsSourceId)
     WasInitialized = LoadFromId
 

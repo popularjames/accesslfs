@@ -83,7 +83,7 @@ Err_handler:
            
 End Function
 
-Public Function Update_Contact(Id As Integer, ContactType As String)
+Public Function Update_Contact(ID As Integer, ContactType As String)
 
     Dim ErrorReturned As String
     On Error GoTo Err_handler
@@ -93,7 +93,7 @@ Public Function Update_Contact(Id As Integer, ContactType As String)
                 myCode_ADO.SQLTextType = StoredProc
                 myCode_ADO.sqlString = "usp_Update_ALJ_Contact"
                 myCode_ADO.Parameters("@pContactType") = ContactType
-                myCode_ADO.Parameters("@pId") = Id
+                myCode_ADO.Parameters("@pId") = ID
                 
                 Set rs = myCode_ADO.ExecuteRS
                  

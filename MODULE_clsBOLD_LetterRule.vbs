@@ -180,10 +180,10 @@ End Property
 
 
 
-Public Property Get Id() As Long
-    Id = clRuleId
+Public Property Get ID() As Long
+    ID = clRuleId
 End Property
-Public Property Let Id(lId As Long)
+Public Property Let ID(lId As Long)
     clRuleId = lId
 End Property
 
@@ -367,7 +367,7 @@ Dim sSql As String
         GoTo Block_Exit
     End If
 
-    DeleteNow = coSourceTable.DeleteID(Me.Id)
+    DeleteNow = coSourceTable.DeleteID(Me.ID)
 
     Dirty = Not DeleteNow
 
@@ -427,7 +427,7 @@ Dim sSql As String
     coSourceTable.IdIsString = False
 '       Debug.Assert iDocRowId <> 7073
     
-    Id = lRuleId
+    ID = lRuleId
     LoadFromId = coSourceTable.LoadFromId(lRuleId)
     WasInitialized = LoadFromId
 
@@ -536,7 +536,7 @@ Dim oItmDtls As clsBOLD_LetterRuleItemDetails
         End If
         CreateNew = .Parameters("@pRuleId").Value
         
-        Me.Id = CreateNew
+        Me.ID = CreateNew
         
     End With
     

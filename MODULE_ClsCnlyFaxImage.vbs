@@ -87,17 +87,17 @@ Public Property Let FileName(ByVal Value As String)
 
     Dim DevMode As ClsCnlyDevMode
     Set DevMode = New ClsCnlyDevMode
-    If Not DevMode.Com.SetImageFileName(OutputPrefix + Value, DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to set filename"
+    If Not DevMode.Com.SetImageFileName(OutputPrefix + Value, DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to set filename"
     DevMode.Save
     m_fileName = Value
 End Property
 ''''''''''''''''''''''
 ' Id property
 ''''''''''''''''''''''
-Public Property Get Id() As String
-    Id = left(m_fileName, InStr(m_fileName, ".") - 1)
+Public Property Get ID() As String
+    ID = left(m_fileName, InStr(m_fileName, ".") - 1)
 End Property
-Public Property Let Id(ByVal Value As String)
+Public Property Let ID(ByVal Value As String)
     If Value = "" Then Value = m_faxSender.GenerateId()
     FileName = Value + ".tif"
 End Property
@@ -128,7 +128,7 @@ Public Property Let TempDirectory(ByVal Value As String)
 
     Dim DevMode As ClsCnlyDevMode
     Set DevMode = New ClsCnlyDevMode
-    If Not DevMode.Com.SetOutputDirectory(Value, DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to set temp dir"
+    If Not DevMode.Com.SetOutputDirectory(Value, DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to set temp dir"
     DevMode.Save
     m_tempDir = Value
 End Property
@@ -144,7 +144,7 @@ Public Property Let ApplicationPath(ByVal Value As String)
 
     Dim DevMode As ClsCnlyDevMode
     Set DevMode = New ClsCnlyDevMode
-    If Not DevMode.Com.SetApplicationPath(Value, DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to set app path"
+    If Not DevMode.Com.SetApplicationPath(Value, DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to set app path"
     DevMode.Save
     m_appPath = Value
 End Property
@@ -187,7 +187,7 @@ Public Property Let HorizontalDpi(ByVal Value As Integer)
 
     Dim DevMode As ClsCnlyDevMode
     Set DevMode = New ClsCnlyDevMode
-    If Not DevMode.Com.SetXDPI(Value, DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to set xdpi"
+    If Not DevMode.Com.SetXDPI(Value, DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to set xdpi"
     DevMode.Save
     m_xDpi = Value
 End Property
@@ -202,7 +202,7 @@ Public Property Let VerticalDpi(ByVal Value As Integer)
 
     Dim DevMode As ClsCnlyDevMode
     Set DevMode = New ClsCnlyDevMode
-    If Not DevMode.Com.SetYDPI(Value, DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to set ydpi"
+    If Not DevMode.Com.SetYDPI(Value, DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to set ydpi"
     DevMode.Save
     m_yDpi = Value
 End Property
@@ -218,9 +218,9 @@ Public Property Let IsFaxOutput(ByVal Value As Boolean)
     Dim DevMode As ClsCnlyDevMode
     Set DevMode = New ClsCnlyDevMode
     If Value Then
-      If Not DevMode.Com.EnableFaxOutput(DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to enable fax output"
+      If Not DevMode.Com.EnableFaxOutput(DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to enable fax output"
     Else
-      If Not DevMode.Com.DisableFaxOutput(DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to disable fax output"
+      If Not DevMode.Com.DisableFaxOutput(DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to disable fax output"
     End If
     DevMode.Save
     m_faxOut = Value
@@ -237,9 +237,9 @@ Public Property Let IsLowFaxOutput(ByVal Value As Boolean)
     Dim DevMode As ClsCnlyDevMode
     Set DevMode = New ClsCnlyDevMode
     If Value Then
-      If Not DevMode.Com.EnableLowFaxOutput(DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to enable fax output"
+      If Not DevMode.Com.EnableLowFaxOutput(DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to enable fax output"
     Else
-      If Not DevMode.Com.DisableLowFaxOutput(DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to disable fax output"
+      If Not DevMode.Com.DisableLowFaxOutput(DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to disable fax output"
     End If
 
     DevMode.Save
@@ -257,9 +257,9 @@ Public Property Let IsForcePrinterDPI(ByVal Value As Boolean)
     Dim DevMode As ClsCnlyDevMode
     Set DevMode = New ClsCnlyDevMode
     If Value Then
-      If Not DevMode.Com.EnableForcePrinterDPI(DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to enable force dpi"
+      If Not DevMode.Com.EnableForcePrinterDPI(DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to enable force dpi"
     Else
-      If Not DevMode.Com.DisableForcePrinterDPI(DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to disable force dpi"
+      If Not DevMode.Com.DisableForcePrinterDPI(DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to disable force dpi"
     End If
     DevMode.Save
     m_forcePrinterDpi = Value
@@ -324,27 +324,27 @@ Private Sub Class_Initialize()
     Set Application.Printer = Printers(m_printerName)
 
     ' Get initial settings so that we can restore them.
-    m_oldTempDir = DevMode.Com.GetOutputDirectory(DevMode.Id)
-    m_oldFileGen = DevMode.Com.GetFileGenerationMethod(DevMode.Id)
-    m_oldAppPath = DevMode.Com.GetApplicationPath(DevMode.Id)
+    m_oldTempDir = DevMode.Com.GetOutputDirectory(DevMode.ID)
+    m_oldFileGen = DevMode.Com.GetFileGenerationMethod(DevMode.ID)
+    m_oldAppPath = DevMode.Com.GetApplicationPath(DevMode.ID)
     m_appPath = m_oldAppPath
-    m_xDpi = DevMode.Com.GetXDPI(DevMode.Id)
+    m_xDpi = DevMode.Com.GetXDPI(DevMode.ID)
     m_oldXDpi = m_xDpi
-    m_yDpi = DevMode.Com.GetYDPI(DevMode.Id)
+    m_yDpi = DevMode.Com.GetYDPI(DevMode.ID)
     m_oldYDpi = m_yDpi
-    m_faxOut = DevMode.Com.IsFaxOutputEnabled(DevMode.Id)
+    m_faxOut = DevMode.Com.IsFaxOutputEnabled(DevMode.ID)
     m_oldFaxOut = m_faxOut
-    m_lowFaxOut = DevMode.Com.IsLowFaxOutputEnabled(DevMode.Id)
+    m_lowFaxOut = DevMode.Com.IsLowFaxOutputEnabled(DevMode.ID)
     m_oldLowFaxOut = m_lowFaxOut
 
     ' Override for the duration of this instance.
     m_fileGen = 3
-    If Not DevMode.Com.SetFileGenerationMethod(3, DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to set file generation method"
+    If Not DevMode.Com.SetFileGenerationMethod(3, DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to set file generation method"
 
     DevMode.Save
     Set DevMode = Nothing
 
-    Id = ""
+    ID = ""
     
     m_tempDir = ""
     TempDirectory = m_faxSender.TempDirectory + "\FAXES"
@@ -359,7 +359,7 @@ Private Sub Class_Terminate()
     Set Application.Printer = m_oldPrinter
 
     ' Restore changed settings.
-    If m_oldFileGen <> -1 Then If Not DevMode.Com.SetFileGenerationMethod(-1, DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to restore file generation mode"
+    If m_oldFileGen <> -1 Then If Not DevMode.Com.SetFileGenerationMethod(-1, DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to restore file generation mode"
     DevMode.Save
     Set DevMode = Nothing
 
@@ -386,7 +386,7 @@ Public Property Let killClass(ByVal Value As Integer)
     m_NewFileGen = Value
     
     ' Restore changed settings.
-    If m_oldFileGen <> m_NewFileGen Then If Not DevMode.Com.SetFileGenerationMethod(m_NewFileGen, DevMode.Id) Then Err.Raise vbObjectError + 1, "Unable to restore file generation mode"
+    If m_oldFileGen <> m_NewFileGen Then If Not DevMode.Com.SetFileGenerationMethod(m_NewFileGen, DevMode.ID) Then Err.Raise vbObjectError + 1, "Unable to restore file generation mode"
     DevMode.Save
     Set DevMode = Nothing
 

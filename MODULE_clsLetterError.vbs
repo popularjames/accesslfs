@@ -67,10 +67,10 @@ End Property
 
 
 
-Public Property Get InstanceID() As String
-    InstanceID = csInstnaceId
+Public Property Get InstanceId() As String
+    InstanceId = csInstnaceId
 End Property
-Public Property Let InstanceID(sErrProc As String)
+Public Property Let InstanceId(sErrProc As String)
     csInstnaceId = sErrProc
 End Property
 

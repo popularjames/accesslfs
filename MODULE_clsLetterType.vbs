@@ -82,10 +82,10 @@ Public Property Get ClassName() As String
 End Property
 
         '' Just an alias for ease of use!
-    Public Property Get Id() As String
-        Id = LetterType
+    Public Property Get ID() As String
+        ID = LetterType
     End Property
-    Public Property Let Id(sNewId As String)
+    Public Property Let ID(sNewId As String)
         LetterType = sNewId
     End Property
 

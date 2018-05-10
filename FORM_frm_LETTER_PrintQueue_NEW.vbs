@@ -1200,7 +1200,7 @@ Dim sNewInstanceFilter As String
     
     For Each oLetter In cdctSelectedLetters.Letters
     
-        strInstanceID = oLetter.InstanceID
+        strInstanceID = oLetter.InstanceId
         ProvNum = oLetter.cnlyProvID
         curLtr = oLetter.LetterType
         strStatus = oLetter.LetterQueueStatus
@@ -1876,7 +1876,7 @@ Stop
     
         ' We already have our selected letters:
     For Each oLetter In cdctSelectedLetters.Letters
-        sInstanceIds = sInstanceIds & "'" & oLetter.InstanceID & "',"
+        sInstanceIds = sInstanceIds & "'" & oLetter.InstanceId & "',"
     Next
     sInstanceIds = left(sInstanceIds, Len(sInstanceIds) - 1) ' remove final comma
     sWhere = "WHERE X.InstanceID IN (" & sInstanceIds & ") "
@@ -2972,7 +2972,7 @@ Dim objLetterTemplate As clsLetterTemplate
     For Each oLetterInst In cdctSelectedLetters.Letters
         If oLetterInst.LetterQueueStatus <> "P" Then ' Or oLetterInst.LetterQueueStatus = "R" Then
 
-            strInstanceID = oLetterInst.InstanceID
+            strInstanceID = oLetterInst.InstanceId
             strProvNum = oLetterInst.cnlyProvID
             strLetterType = oLetterInst.LetterType
             dtLetterReqDt = oLetterInst.LetterReqDt
@@ -3015,7 +3015,7 @@ Dim objLetterTemplate As clsLetterTemplate
             
             ' Set data source for mail merge.  Data will be from new Temp Table
             objWordDoc.MailMerge.OpenDataSource Name:=strODCFile, _
-                                SqlStatement:="exec " & sMergeSproc & " '" & oLetterInst.InstanceID & "'"
+                                SqlStatement:="exec " & sMergeSproc & " '" & oLetterInst.InstanceId & "'"
                             
 
             ' Perform mail merge.
@@ -3037,7 +3037,7 @@ Dim objLetterTemplate As clsLetterTemplate
             
             ' 20130219 KD: Add the Sec Pages field in the footer for barcodes
             If oLetterInst.InstanceQRCodePath <> "" Then
-                Call AddInstanceIdQRCode(objWordApp.ActiveDocument, oLetterInst.InstanceID, oLetterInst.InstanceQRCodePath)
+                Call AddInstanceIdQRCode(objWordApp.ActiveDocument, oLetterInst.InstanceId, oLetterInst.InstanceQRCodePath)
             End If
     
             ' Save the output doc
@@ -3049,14 +3049,14 @@ Dim objLetterTemplate As clsLetterTemplate
             Call CreateFolders(strOutputPath)
 
             If Not FolderExists(strOutputPath) Then
-                strErrMsg = "Provider folder for letter was not created for instance: " & oLetterInst.InstanceID & vbNewLine + vbNewLine & "Process will continue for the instances left."
+                strErrMsg = "Provider folder for letter was not created for instance: " & oLetterInst.InstanceId & vbNewLine + vbNewLine & "Process will continue for the instances left."
                 GoTo Block_Err
             End If
     
             If oLetterInst.LetterQueueStatus = "R" Then
-                strOutputFileName = QualifyFldrPath(strOutputPath) & "" & strLetterType & "-Reprint-" & oLetterInst.InstanceID & ".doc"
+                strOutputFileName = QualifyFldrPath(strOutputPath) & "" & strLetterType & "-Reprint-" & oLetterInst.InstanceId & ".doc"
             Else
-                strOutputFileName = QualifyFldrPath(strOutputPath) & "" & strLetterType & "-" & oLetterInst.InstanceID & ".doc"
+                strOutputFileName = QualifyFldrPath(strOutputPath) & "" & strLetterType & "-" & oLetterInst.InstanceId & ".doc"
             End If
     
             objWordMergedDoc.spellingchecked = True
@@ -3066,7 +3066,7 @@ Dim objLetterTemplate As clsLetterTemplate
 
             
             If UnlinkWordFields(objWordApp, objWordMergedDoc, oLetterInst.LetterType) = False Then
-                LogMessage strProcName, "LETTER ERROR", "Failed to unlink word fields for some reason!", oLetterInst.InstanceID
+                LogMessage strProcName, "LETTER ERROR", "Failed to unlink word fields for some reason!", oLetterInst.InstanceId
             End If
 
             
@@ -3811,7 +3811,7 @@ Stop
         End If
         
     
-        strInstanceID = oLetterToGenerate.InstanceID
+        strInstanceID = oLetterToGenerate.InstanceId
         strProvNum = oLetterToGenerate.ProvNum
         strLetterType = oLetterToGenerate.LetterType
         
@@ -3852,7 +3852,7 @@ Stop
 '        End If
         If PrintLetterInstance(oLetterToGenerate, objLetterTemplate.TemplateLoc, strOutputFileName, strOutputLocation, strProvNum, _
                                         strODCFile, strLetterType, iPageCount) = False Then
-            LogMessage strProcName, "ERROR", "Printing the letter instance failed for InstanceId: " & CStr(oLetterToGenerate.InstanceID), strErrMsg
+            LogMessage strProcName, "ERROR", "Printing the letter instance failed for InstanceId: " & CStr(oLetterToGenerate.InstanceId), strErrMsg
                 Call ErrorCallStack_Add(clBatchId, "There was a problem generating a letter. Cannot proceed!", strProcName, strLetterType)
             bAtLeastOneErrored = True
             GoTo NextLetter
@@ -3932,15 +3932,15 @@ Dim oAdo As clsADO
         .sqlString = "usp_LETTER_Automation_AssignInstanceIds_ManualOverride"
         .Parameters.Refresh
         .Parameters("@pAccountId") = gintAccountID
-        .Parameters("@pDynamicInstanceId") = oLetterToGenerate.InstanceID
+        .Parameters("@pDynamicInstanceId") = oLetterToGenerate.InstanceId
         .Execute
         If Nz(.Parameters("@pErrMsg").Value, "") <> "" Then
             Stop
         End If
-        oLetterToGenerate.InstanceID = .Parameters("@pRealInstanceId").Value
+        oLetterToGenerate.InstanceId = .Parameters("@pRealInstanceId").Value
     End With
 
-    AssignInstanceId = oLetterToGenerate.InstanceID
+    AssignInstanceId = oLetterToGenerate.InstanceId
 Block_Exit:
     Set oAdo = Nothing
     Exit Function
@@ -3964,7 +3964,7 @@ Dim vKey As Variant
     strProcName = ClassName & "AssignBatchId"
     
     For Each oLtr In cdctSelectedLetters.Letters
-        sIdList = sIdList & oLtr.InstanceID + ","
+        sIdList = sIdList & oLtr.InstanceId + ","
     Next
     If InStr(1, sIdList, ",") > 0 Then
         sIdList = left(sIdList, Len(sIdList) - 1)
@@ -4101,7 +4101,7 @@ Dim sMergeSproc As String
     
     ' Set data source for mail merge.  Data will be from new Temp Table
     objWordDoc.MailMerge.OpenDataSource Name:=pstrODCFile, _
-                        SqlStatement:="exec " & sMergeSproc & " '" & oLetterInst.InstanceID & "'"
+                        SqlStatement:="exec " & sMergeSproc & " '" & oLetterInst.InstanceId & "'"
                     
 
 
@@ -4124,7 +4124,7 @@ Dim sMergeSproc As String
     
     ' 20130219 KD: Add the Sec Pages field in the footer for barcodes
     If oLetterInst.InstanceQRCodePath <> "" Then
-        Call AddInstanceIdQRCode(objWordApp.ActiveDocument, oLetterInst.InstanceID, oLetterInst.InstanceQRCodePath)
+        Call AddInstanceIdQRCode(objWordApp.ActiveDocument, oLetterInst.InstanceId, oLetterInst.InstanceQRCodePath)
     End If
     
     
@@ -4134,15 +4134,15 @@ Dim sMergeSproc As String
     Call CreateFolders(strOutputPath)
 
     If Not FolderExists(strOutputPath) Then
-        strErrMsg = "Provider folder for letter was not created for instance: " & oLetterInst.InstanceID & vbNewLine + vbNewLine & "Process will continue for the instances left."
+        strErrMsg = "Provider folder for letter was not created for instance: " & oLetterInst.InstanceId & vbNewLine + vbNewLine & "Process will continue for the instances left."
         GoTo Block_Err
     End If
     
     If oLetterInst.LetterQueueStatus = "R" Then
     'If pstrInstanceStatus = "R" Then
-        pstrOutputFileName = strOutputPath & "" & pstrLetterType & "-Reprint-" & oLetterInst.InstanceID & ".doc"
+        pstrOutputFileName = strOutputPath & "" & pstrLetterType & "-Reprint-" & oLetterInst.InstanceId & ".doc"
     Else
-        pstrOutputFileName = strOutputPath & "" & pstrLetterType & "-" & oLetterInst.InstanceID & ".doc"
+        pstrOutputFileName = strOutputPath & "" & pstrLetterType & "-" & oLetterInst.InstanceId & ".doc"
     End If
     
     objWordMergedDoc.spellingchecked = True
@@ -4152,7 +4152,7 @@ Dim sMergeSproc As String
 
     
     If UnlinkWordFields(objWordApp, objWordMergedDoc, oLetterInst.LetterType) = False Then
-        LogMessage strProcName, "LETTER ERROR", "Failed to unlink word fields for some reason!", oLetterInst.InstanceID
+        LogMessage strProcName, "LETTER ERROR", "Failed to unlink word fields for some reason!", oLetterInst.InstanceId
     End If
 
     
@@ -4245,7 +4245,7 @@ Dim sMergeSproc As String
     DoEvents
 
     If Not FileExists(pstrOutputFileName) Then
-        strErrMsg = "PrintLetterInstance: Letter was not created for instance " & oLetterInst.InstanceID & vbNewLine + vbNewLine & "Process will continue for the instances left."
+        strErrMsg = "PrintLetterInstance: Letter was not created for instance " & oLetterInst.InstanceId & vbNewLine + vbNewLine & "Process will continue for the instances left."
         LogMessage strProcName, "ERROR", "Generated letter does not exist where it should", pstrOutputFileName
         
         GoTo Block_Err
@@ -4278,7 +4278,7 @@ Dim sMergeSproc As String
     oCmd.commandType = adCmdStoredProc
     oCmd.CommandText = "usp_LETTER_Automation_Update_Status"
     oCmd.Parameters.Refresh
-    oCmd.Parameters("@pInstanceID").Value = oLetterInst.InstanceID
+    oCmd.Parameters("@pInstanceID").Value = oLetterInst.InstanceId
     oCmd.Parameters("@pLetterPath").Value = pstrOutputFileName
     oCmd.Parameters("@pNextStatus").Value = "G" ' for Generated, not yet printed..
     oCmd.Execute
@@ -4301,7 +4301,7 @@ Dim sMergeSproc As String
     oCmd.commandType = adCmdStoredProc
     oCmd.CommandText = "usp_LETTER_AuditClaims_Update"
     oCmd.Parameters.Refresh
-    oCmd.Parameters("@pInstanceID").Value = oLetterInst.InstanceID
+    oCmd.Parameters("@pInstanceID").Value = oLetterInst.InstanceId
     oCmd.Parameters("@pInstanceStatus").Value = oLetterInst.LetterQueueStatus
     oCmd.Execute
             
@@ -4766,7 +4766,7 @@ Dim oPrintError As clsLetterError
         .ErrorNum = lErrNum
         .ErrorProc = sErrProc
         .FatalError = bFatal
-        .InstanceID = sInstanceId
+        .InstanceId = sInstanceId
         .LetterType = sLetterType
         .CnlyClaimNums = sCnlyClaimNums
     End With
@@ -4847,7 +4847,7 @@ Dim sNewMsg As String
         sNewMsg = Replace(sNewMsg, "[%ERRORNUM%]", CStr(.ErrorNum), , , vbTextCompare)
         sNewMsg = Replace(sNewMsg, "[%ERRORPROC%]", .ErrorProc, , , vbTextCompare)
         sNewMsg = Replace(sNewMsg, "[%FATALERROR%]", CStr(.FatalError), , , vbTextCompare)
-        sNewMsg = Replace(sNewMsg, "[%INSTANCEID%]", .InstanceID, , , vbTextCompare)
+        sNewMsg = Replace(sNewMsg, "[%INSTANCEID%]", .InstanceId, , , vbTextCompare)
         sNewMsg = Replace(sNewMsg, "[%LETTERTYPE%]", .LetterType, , , vbTextCompare)
         sNewMsg = Replace(sNewMsg, "[%CNLYCLAIMNUMS%]", .CnlyClaimNums, , , vbTextCompare)
         

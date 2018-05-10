@@ -431,7 +431,7 @@ Private Sub GenerateLetter(ICNToGen As String)
             strNewFilePath = "FAX_" & gbl_DocID & "_" & strLTTRID
           
             faxImage.OutputPath = strOutputPath
-            faxImage.Id = strNewFilePath
+            faxImage.ID = strNewFilePath
             
             Set Application.Printer = Application.Printers("Connolly Fax")
             Set prtDefault = Application.Printer

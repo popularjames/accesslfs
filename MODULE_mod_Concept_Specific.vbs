@@ -653,7 +653,7 @@ Dim lNewRowId As Long
                 Else
                     ' need to insert into Concept_References a copy of it
                     If CopyAttachTypeFromRowId(CLng(saryDocPayerIds(iPayerID)), oConcept.ConceptID, oAtchDoc.RowID, lNewRowId) = False Then
-                        LogMessage strProcName, "ERROR", "There was a problem with creating a copy of this document for a different payer!", CStr(oAtchDoc.Id), , oConcept.ConceptID
+                        LogMessage strProcName, "ERROR", "There was a problem with creating a copy of this document for a different payer!", CStr(oAtchDoc.ID), , oConcept.ConceptID
                     End If
                     If dctRowNPayers.Exists(CStr(lNewRowId)) = True Then
     '                        Stop    ' why? shouldn't have it more than once
@@ -5454,7 +5454,7 @@ Dim colPayers As Collection
             .Parameters.Refresh
             .Parameters("@pConceptId") = oConcept.ConceptID
             .Parameters("@pPayerNameID") = oPayer.PayerNameId
-            .Parameters("@pRequirementId") = oConcept.RequirementRuleObj.Id
+            .Parameters("@pRequirementId") = oConcept.RequirementRuleObj.ID
             Set oRs = .ExecuteRS
             If .GotData = False Then
                 LogMessage strProcName, , "No tagged claims found for this concept and payer", , , oConcept.ConceptID

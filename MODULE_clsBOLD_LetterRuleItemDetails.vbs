@@ -345,7 +345,7 @@ Dim strProcName As String
         GoTo Block_Exit
     End If
         
-    If oItem.Id = 0 Then
+    If oItem.ID = 0 Then
         oItem.SecureLocalId (oItem.ItemType)
     End If
     
@@ -388,7 +388,7 @@ Dim oItem As clsBOLD_LetterRuleItemDetail
     oItem.BooleanVal = iItemBoolean
     oItem.Operator = sOperator
     oItem.ItemValue = sValue
-    oItem.Id = lItemId
+    oItem.ID = lItemId
     oItem.RuleId = lRemoteItemId
     oItem.RuleItemId = lRuleItemId
     AddItem = AddItemObj(oItem)
@@ -415,12 +415,12 @@ Dim oItm As clsBOLD_LetterRuleItemDetail
     
     For Each oItm In ccolItemDetails
         iIdx = iIdx + 1
-        If oItm.Id = oItem.Id Then
+        If oItm.ID = oItem.ID Then
             Exit For
         End If
     Next
     
-    If oItem.Id = 0 Then
+    If oItem.ID = 0 Then
         oItem.SecureLocalId (oItem.ItemType)
     End If
     
@@ -462,7 +462,7 @@ Dim oItem As clsBOLD_LetterRuleItemDetail
     oItem.BooleanVal = iItemBoolean
     oItem.Operator = sOperator
     oItem.ItemValue = sValue
-    oItem.Id = lItemId
+    oItem.ID = lItemId
     oItem.RuleId = lRuleId
     oItem.RuleItemId = lRuleItemId
     

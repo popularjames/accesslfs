@@ -65,10 +65,10 @@ Public Property Let CnlyClaimNum(sCnlyClaimNum As String)
     csCnlyClaimNum = sCnlyClaimNum
 End Property
         '' Just an alias for ease of use!
-    Public Property Get Id() As String
-        Id = CnlyClaimNum
+    Public Property Get ID() As String
+        ID = CnlyClaimNum
     End Property
-    Public Property Let Id(sNewId As String)
+    Public Property Let ID(sNewId As String)
         CnlyClaimNum = sNewId
     End Property
 
@@ -359,7 +359,7 @@ Dim oRs As ADODB.RecordSet
     sCnlyClaimNum = Nz(oRs("CnlyClaimNum").Value, "")
     
     coSourceTable.IdIsString = True
-    Id = sCnlyClaimNum
+    ID = sCnlyClaimNum
     LoadFromTaggedClaimId = coSourceTable.LoadFromIDStr(sCnlyClaimNum)
     WasInitialized = LoadFromTaggedClaimId
 
@@ -386,7 +386,7 @@ Dim strProcName As String
 
     strProcName = ClassName & ".LoadFromID"
     coSourceTable.IdIsString = True
-    Id = sCnlyClaimNum
+    ID = sCnlyClaimNum
     LoadFromId = coSourceTable.LoadFromIDStr(sCnlyClaimNum)
     WasInitialized = LoadFromId
 

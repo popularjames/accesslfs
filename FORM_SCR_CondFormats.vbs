@@ -9,7 +9,7 @@ Private MvScreenID As Long
 Private mvFormId As Byte
 Private MvScr As Form_SCR_MainScreens
 Private Type CnlyFormat
-    Id As Long
+    ID As Long
     FormatName As String
     FieldName As String
     BackColor As Long
@@ -406,7 +406,7 @@ Set db = CurrentDb
 Set rst = db.OpenRecordSet(SQL, dbOpenSnapshot)
 With rst
     Do Until .EOF
-        LocFormat.Id = .Fields("CondFormatID")
+        LocFormat.ID = .Fields("CondFormatID")
         LocFormat.FormatName = .Fields("FormatName")
         LocFormat.FieldName = "" & .Fields("FieldName")
         LocFormat.Type = .Fields("Type")

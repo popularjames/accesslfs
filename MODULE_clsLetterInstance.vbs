@@ -103,19 +103,19 @@ Public Property Get ClassName() As String
     ClassName = TypeName(Me)
 End Property
 
-Public Property Get InstanceID() As String
-    InstanceID = cstrInstanceId
+Public Property Get InstanceId() As String
+    InstanceId = cstrInstanceId
 End Property
-Public Property Let InstanceID(sInstanceId As String)
+Public Property Let InstanceId(sInstanceId As String)
     cstrInstanceId = sInstanceId
     WasInitialized = True
 End Property
         '' Just an alias for ease of use!
-    Public Property Get Id() As String
-        Id = InstanceID
+    Public Property Get ID() As String
+        ID = InstanceId
     End Property
-    Public Property Let Id(sNewId As String)
-        InstanceID = sNewId
+    Public Property Let ID(sNewId As String)
+        InstanceId = sNewId
     End Property
 
 
@@ -469,7 +469,7 @@ Dim sExt As String
             .sqlString = "usp_LETTER_Automation_SaveStaticDetails"
             .Parameters.Refresh
             .Parameters("@pAccountId") = Me.AccountID
-            .Parameters("@pInstanceId") = Me.InstanceID
+            .Parameters("@pInstanceId") = Me.InstanceId
             .Parameters("@pPageCount") = Me.PageCount
             .Parameters("@pLetterPath") = Me.LetterPath
             .Parameters("@pLetterFileName") = sLtrFileName
@@ -480,7 +480,7 @@ Dim sExt As String
             .Parameters("@pContractId") = Me.ContractId
             .Execute
             If Nz(.Parameters("@pErrMsg").Value, "") <> "" Then
-                LogMessage strProcName, "ERROR", "An error occurred saving page count for instance: " & Me.InstanceID, .Parameters("@pErrMsg").Value
+                LogMessage strProcName, "ERROR", "An error occurred saving page count for instance: " & Me.InstanceId, .Parameters("@pErrMsg").Value
                 Stop
                 GoTo Block_Exit
                 
@@ -495,7 +495,7 @@ Dim sExt As String
             .sqlString = "usp_LETTER_SaveStaticDetails"
             .Parameters.Refresh
 '            .Parameters("@pAccountId") = Me.AccountID
-            .Parameters("@pInstanceId") = Me.InstanceID
+            .Parameters("@pInstanceId") = Me.InstanceId
             .Parameters("@pPageCount") = Me.PageCount
             .Parameters("@pLetterPath") = Me.LetterPath
             .Parameters("@pLetterFileName") = sLtrFileName
@@ -505,7 +505,7 @@ Dim sExt As String
             .Execute
             If Nz(.Parameters("@pErrMsg").Value, "") <> "" Then
     'Stop
-                LogMessage strProcName, "ERROR", "An error occurred saving page count for instance: " & Me.InstanceID, .Parameters("@pErrMsg").Value
+                LogMessage strProcName, "ERROR", "An error occurred saving page count for instance: " & Me.InstanceId, .Parameters("@pErrMsg").Value
                 GoTo Block_Exit
                 Stop
             End If
@@ -549,7 +549,7 @@ Dim oRs As ADODB.RecordSet
         .sqlString = "usp_LETTER_Automation_UpdateStaticDetails"
         .Parameters.Refresh
         .Parameters("@pAccountId") = gintAccountID
-        .Parameters("@pInstanceId") = Me.InstanceID
+        .Parameters("@pInstanceId") = Me.InstanceId
         .Parameters("@pLetterBatchId") = Me.BatchID
         .Parameters("@pCombineRunId") = CurrentProcessor.ThisQueueRunId
         .Parameters("@pCombinedFolderPath") = sCombinedDocFolderPath
@@ -561,7 +561,7 @@ Dim oRs As ADODB.RecordSet
         .Execute
         If Nz(.Parameters("@pErrMsg").Value, "") <> "" Then
             Stop
-            LogMessage strProcName, "ERROR", "An error occurred saving page count for instance: " & Me.InstanceID, .Parameters("@pErrMsg").Value
+            LogMessage strProcName, "ERROR", "An error occurred saving page count for instance: " & Me.InstanceId, .Parameters("@pErrMsg").Value
             GoTo Block_Exit
             Stop
         End If
@@ -600,10 +600,10 @@ Dim oRs As ADODB.RecordSet
         .SQLTextType = StoredProc
         .sqlString = "usp_LETTER_GetAddressByInstanceId"
         .Parameters.Refresh
-        .Parameters("@pInstanceId") = Me.InstanceID
+        .Parameters("@pInstanceId") = Me.InstanceId
         Set oRs = .ExecuteRS
         If .GotData = False Or Nz(.Parameters("@pErrMsg").Value, "") <> "" Then
-            LogMessage strProcName, "ERROR", "Could not get the address for instance ID: " & Me.InstanceID, Nz(.Parameters("@pErrMsg").Value, "")
+            LogMessage strProcName, "ERROR", "Could not get the address for instance ID: " & Me.InstanceId, Nz(.Parameters("@pErrMsg").Value, "")
             GoTo Block_Exit
         End If
     End With
@@ -649,7 +649,7 @@ Dim strProcName As String
 
     strProcName = ClassName & ".LoadFromID"
     coSourceTable.IdIsString = True
-    Id = sInstanceId
+    ID = sInstanceId
     LoadFromId = coSourceTable.LoadFromIDStr(sInstanceId)
     WasInitialized = LoadFromId
 
@@ -688,7 +688,7 @@ Dim strProcName As String
 
     strProcName = ClassName & ".LoadFromRS"
     coSourceTable.IdIsString = True
-    Id = oRs("InstanceId").Value
+    ID = oRs("InstanceId").Value
     LoadFromRS = coSourceTable.InitializeFromRS(oRs)
     WasInitialized = LoadFromRS
 
@@ -709,7 +709,7 @@ Block_Exit:
 
 Block_Err:
     LoadFromRS = False
-    FireError Err, strProcName, "Instance ID: " & Id
+    FireError Err, strProcName, "Instance ID: " & ID
     GoTo Block_Exit
 End Function
 
@@ -718,7 +718,7 @@ End Function
 Public Function RefreshObject() As Boolean
 Dim sInstanceId As String
 
-    sInstanceId = Me.InstanceID
+    sInstanceId = Me.InstanceId
 
     Call Class_Initialize
     
@@ -836,7 +836,7 @@ Dim sVal As String
     With oAdo
         .ConnectionString = GetConnectString("v_Data_Database")
         .SQLTextType = sqltext
-        .sqlString = "SELECT TOP 1 QRPath FROM LETTER_Barcode_Service_Details WHERE InstanceId = '" & Me.InstanceID & "'"
+        .sqlString = "SELECT TOP 1 QRPath FROM LETTER_Barcode_Service_Details WHERE InstanceId = '" & Me.InstanceId & "'"
         Set oRs = .ExecuteRS
         If oRs.EOF And oRs.BOF Then
             Debug.Print "no qr code path..."

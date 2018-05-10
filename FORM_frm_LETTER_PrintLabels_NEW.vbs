@@ -264,7 +264,7 @@ Dim iSkip As Integer
 
     For Each oLetter In cdctSelectedLetters.Letters
         oRs.AddNew
-        oRs("InstanceId") = oLetter.InstanceID
+        oRs("InstanceId") = oLetter.InstanceId
         oRs("DateAdded") = Now()
         oRs("User") = Identity.UserName
         oRs.Update
@@ -1271,7 +1271,7 @@ Dim sSuperName As String
     For Each oLetter In cdctSelectedLetters.Letters
         If oLetter.LetterQueueStatus = "W" Or oLetter.LetterQueueStatus = "R" Then
 
-            strInstanceID = oLetter.InstanceID
+            strInstanceID = oLetter.InstanceId
             strProvNum = oLetter.cnlyProvID
             strLetterType = oLetter.LetterType
             dtLetterReqDt = oLetter.LetterReqDt
@@ -1922,7 +1922,7 @@ Dim iPageCount As Integer
         End If
         
     
-        strInstanceID = oLetterToGenerate.InstanceID
+        strInstanceID = oLetterToGenerate.InstanceId
         strProvNum = oLetterToGenerate.ProvNum
         strLetterType = oLetterToGenerate.LetterType
         
@@ -1952,7 +1952,7 @@ Dim iPageCount As Integer
            
         If PrintLetterInstance(oLetterToGenerate, objLetterTemplate.TemplateLoc, strOutputFileName, strOutputLocation, strProvNum, _
                                         strODCFile, strLetterType, iPageCount) = False Then
-            LogMessage strProcName, "ERROR", "Printing the letter instance failed for InstanceId: " & CStr(oLetterToGenerate.InstanceID), strErrMsg
+            LogMessage strProcName, "ERROR", "Printing the letter instance failed for InstanceId: " & CStr(oLetterToGenerate.InstanceId), strErrMsg
             bAtLeastOneErrored = True
             GoTo NextLetter
         End If
@@ -2085,7 +2085,7 @@ Dim objWordApp As Word.Application, _
     oCmd.commandType = adCmdStoredProc
     oCmd.CommandText = "usp_LETTER_Get_Info_load"
     oCmd.Parameters.Refresh
-    oCmd.Parameters("@InstanceID") = oLetterInst.InstanceID
+    oCmd.Parameters("@InstanceID") = oLetterInst.InstanceId
     oCmd.Execute
     
     strErrMsg = Trim(oCmd.Parameters("@ErrMsg").Value) & ""
@@ -2096,7 +2096,7 @@ Dim objWordApp As Word.Application, _
     
     ' Set data source for mail merge.  Data will be from new Temp Table
     objWordDoc.MailMerge.OpenDataSource Name:=pstrODCFile, _
-                        SqlStatement:="exec usp_LETTER_Get_Info '" & oLetterInst.InstanceID & "'"
+                        SqlStatement:="exec usp_LETTER_Get_Info '" & oLetterInst.InstanceId & "'"
                     
     
     ' Perform mail merge.
@@ -2122,15 +2122,15 @@ Dim objWordApp As Word.Application, _
     Call CreateFolders(strOutputPath)
 
     If Not FolderExists(strOutputPath) Then
-        strErrMsg = "Provider folder for letter was not created for instance: " & oLetterInst.InstanceID & vbNewLine + vbNewLine & "Process will continue for the instances left."
+        strErrMsg = "Provider folder for letter was not created for instance: " & oLetterInst.InstanceId & vbNewLine + vbNewLine & "Process will continue for the instances left."
         GoTo Block_Err
     End If
     
     If oLetterInst.LetterQueueStatus = "R" Then
     'If pstrInstanceStatus = "R" Then
-        pstrOutputFileName = strOutputPath & "" & pstrLetterType & "-Reprint-" & oLetterInst.InstanceID & ".doc"
+        pstrOutputFileName = strOutputPath & "" & pstrLetterType & "-Reprint-" & oLetterInst.InstanceId & ".doc"
     Else
-        pstrOutputFileName = strOutputPath & "" & pstrLetterType & "-" & oLetterInst.InstanceID & ".doc"
+        pstrOutputFileName = strOutputPath & "" & pstrLetterType & "-" & oLetterInst.InstanceId & ".doc"
     End If
     
     objWordMergedDoc.spellingchecked = True
@@ -2164,7 +2164,7 @@ Dim objWordApp As Word.Application, _
     Set objWordMergedDoc = Nothing
     
     If Not FileExists(pstrOutputFileName) Then
-        strErrMsg = "PrintLetterInstance: Letter was not created for instance " & oLetterInst.InstanceID & vbNewLine + vbNewLine & "Process will continue for the instances left."
+        strErrMsg = "PrintLetterInstance: Letter was not created for instance " & oLetterInst.InstanceId & vbNewLine + vbNewLine & "Process will continue for the instances left."
         LogMessage strProcName, "ERROR", "Generated letter does not exist where it should", pstrOutputFileName
         
         GoTo Block_Err
@@ -2190,7 +2190,7 @@ Dim objWordApp As Word.Application, _
     oCmd.commandType = adCmdStoredProc
     oCmd.CommandText = "usp_LETTER_Update_Status"
     oCmd.Parameters.Refresh
-    oCmd.Parameters("@InstanceID").Value = oLetterInst.InstanceID
+    oCmd.Parameters("@InstanceID").Value = oLetterInst.InstanceId
     oCmd.Parameters("@LetterName").Value = pstrOutputFileName
     oCmd.Parameters("@pNextStatus").Value = "G" ' for Generated, not yet printed..
     oCmd.Execute
@@ -2209,7 +2209,7 @@ Dim objWordApp As Word.Application, _
     oCmd.commandType = adCmdStoredProc
     oCmd.CommandText = "usp_LETTER_AuditClaims_Update"
     oCmd.Parameters.Refresh
-    oCmd.Parameters("@pInstanceID").Value = oLetterInst.InstanceID
+    oCmd.Parameters("@pInstanceID").Value = oLetterInst.InstanceId
     oCmd.Parameters("@pInstanceStatus").Value = oLetterInst.LetterQueueStatus
     oCmd.Execute
             

@@ -1724,7 +1724,7 @@ End Function
 
 
 
-Public Function HP_Process_Single_RESPONSE_Row(folderName As String, ProvID As String, ImageName As String, Icn As String, InstanceID As String) As Boolean
+Public Function HP_Process_Single_RESPONSE_Row(folderName As String, ProvID As String, ImageName As String, Icn As String, InstanceId As String) As Boolean
     
     Dim fso As New FileSystemObject
     Dim oFile As file
@@ -1767,7 +1767,7 @@ Public Function HP_Process_Single_RESPONSE_Row(folderName As String, ProvID As S
     cmd.Parameters("@pMRResponseFile") = strBaseFolderName
     cmd.Parameters("@pImageName") = ImageName
     cmd.Parameters("@pICN") = Icn
-    cmd.Parameters("@pInstanceID") = InstanceID
+    cmd.Parameters("@pInstanceID") = InstanceId
     
     
     myCode_ADO.BeginTrans

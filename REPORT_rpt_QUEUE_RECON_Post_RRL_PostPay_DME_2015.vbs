@@ -2659,7 +2659,7 @@ Private Sub Report_Load()
     
     'Me.txtAdjReviewtype.visible = False 'MG do display adj review type to providers
     
-    If Me.txtAdjReviewtype.Value = "PRP" Then
+    If Me.txtAdjReviewType.Value = "PRP" Then
         lblPrePayLanguageContent.visible = True
         lblPostPayLanguageContent.visible = False
         

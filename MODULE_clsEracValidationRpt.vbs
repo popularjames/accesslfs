@@ -57,10 +57,10 @@ Public Property Let ConceptID(sConceptId As String)
     csConceptId = sConceptId
 End Property
         '' Just an alias for ease of use!
-    Public Property Get Id() As String
-        Id = ConceptID
+    Public Property Get ID() As String
+        ID = ConceptID
     End Property
-    Public Property Let Id(sNewId As String)
+    Public Property Let ID(sNewId As String)
         ConceptID = sNewId
     End Property
 

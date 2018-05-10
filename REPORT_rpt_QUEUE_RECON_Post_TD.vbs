@@ -5053,7 +5053,7 @@ Private Sub Report_Load()
     Dim ProvID As String
     
     
-    Me.txtAdjReviewtype.visible = False 'MG do display adj review type to providers
+    Me.txtAdjReviewType.visible = False 'MG do display adj review type to providers
     
         lblADRRequestDate.visible = False
         txtLetterReqDt.visible = False

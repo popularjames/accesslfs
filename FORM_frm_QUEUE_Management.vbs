@@ -1068,7 +1068,7 @@ Private Function SetQueueSQL(QueueLevel As String) As String
 End Function
 
 
-Private Sub frmReAssignSelect_ReAssignQueue(AssignedTo As String, comment As String, Action As String)
+Private Sub frmReAssignSelect_ReAssignQueue(AssignedTo As String, Comment As String, Action As String)
     Dim rsQueueHdr As ADODB.RecordSet
     Dim rsNote As ADODB.RecordSet
     Dim varItem As Variant
@@ -1102,14 +1102,14 @@ Private Sub frmReAssignSelect_ReAssignQueue(AssignedTo As String, comment As Str
     strErrMsg = ""
     strErrSource = "frmReAssignSelect_ReAssignQueue"
     
-    If comment <> "" Then
+    If Comment <> "" Then
         MyAdo.sqlString = "select * from NOTE_Detail where 1=2"
         Set rsNote = MyAdo.OpenRecordSet
         With rsNote
             .AddNew
             !AppID = Me.frmAppID
             !NoteType = "GENERAL"
-            !NoteText = comment
+            !NoteText = Comment
             !NoteUserID = Identity.UserName()
         End With
     End If
@@ -1143,7 +1143,7 @@ Private Sub frmReAssignSelect_ReAssignQueue(AssignedTo As String, comment As Str
             End If
             
             ' add note
-            If comment <> "" Then
+            If Comment <> "" Then
                 iNoteID = GetAppKey("NOTE")
                 rsNote.MoveFirst
                 rsNote("NoteID") = iNoteID

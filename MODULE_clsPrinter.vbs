@@ -47,7 +47,7 @@ Private Type PRINTER_NOTIFY_INFO_DATA
   Type As Integer
   Field As Integer
   Reserved As Long
-  Id As Long
+  ID As Long
   adwData(0 To 1) As Long
 End Type
 

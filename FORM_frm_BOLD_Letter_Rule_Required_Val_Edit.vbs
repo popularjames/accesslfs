@@ -60,10 +60,10 @@ End Property
 
 
 Public Property Get LocalId() As Long
-    LocalId = coItem.Id
+    LocalId = coItem.ID
 End Property
 Public Property Let LocalId(lLocalId As Long)
-    coItem.Id = lLocalId
+    coItem.ID = lLocalId
 End Property
 
 
@@ -159,7 +159,7 @@ Dim strProcName As String
     If coItem Is Nothing Then GoTo Block_Exit
     
     With coItem
-        Me.txtItemId = .Id
+        Me.txtItemId = .ID
         Me.txtItemName = .ItemName
         Me.frmAndOr = .BooleanVal
         Me.cmbOperator = .Operator

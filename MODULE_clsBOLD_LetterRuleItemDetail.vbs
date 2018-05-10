@@ -161,10 +161,10 @@ Public Property Let ListItemObject(oListItem As Object)
 End Property
 
 
-Public Property Get Id() As Long
-    Id = clLocalId
+Public Property Get ID() As Long
+    ID = clLocalId
 End Property
-Public Property Let Id(lId As Long)
+Public Property Let ID(lId As Long)
     clLocalId = lId
 End Property
 
@@ -375,10 +375,10 @@ Dim strProcName As String
     strProcName = ClassName & ".SecureLocalId"
     
     SecureLocalId = coSourceTable.AddNewID
-    Me.Id = SecureLocalId
+    Me.ID = SecureLocalId
     
-    If Me.Id > 0 Then
-        Me.LoadFromId (Me.Id)
+    If Me.ID > 0 Then
+        Me.LoadFromId (Me.ID)
         
     End If
     
@@ -542,7 +542,7 @@ Dim sSql As String
         GoTo Block_Exit
     End If
 
-    DeleteNow = coSourceTable.DeleteID(Me.Id)
+    DeleteNow = coSourceTable.DeleteID(Me.ID)
 
     Dirty = Not DeleteNow
 
@@ -571,7 +571,7 @@ Dim strProcName As String
     coSourceTable.IdIsString = False
 '       Debug.Assert iDocRowId <> 7073
     
-    Id = lDocRowId
+    ID = lDocRowId
     LoadFromId = coSourceTable.LoadFromId(lDocRowId)
     WasInitialized = LoadFromId
 
@@ -627,7 +627,7 @@ Dim strProcName As String
 
     strProcName = ClassName & ".LoadFromRS"
     coSourceTable.IdIsString = False
-    Id = oRs("LocalId").Value
+    ID = oRs("LocalId").Value
     LoadFromRS = coSourceTable.InitializeFromRS(oRs, True)
     WasInitialized = LoadFromRS
 
@@ -648,7 +648,7 @@ Block_Exit:
 
 Block_Err:
     LoadFromRS = False
-    FireError Err, strProcName, "Instance ID: " & Id
+    FireError Err, strProcName, "Instance ID: " & ID
     GoTo Block_Exit
 End Function
 

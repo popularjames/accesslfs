@@ -109,10 +109,10 @@ Public Property Let ConceptID(sConceptId As String)
     csConceptId = sConceptId
 End Property
         '' Just an alias for ease of use!
-    Public Property Get Id() As Long
-        Id = ConceptIDPayerNameId_RowId
+    Public Property Get ID() As Long
+        ID = ConceptIDPayerNameId_RowId
     End Property
-    Public Property Let Id(lNewId As Long)
+    Public Property Let ID(lNewId As Long)
         ConceptIDPayerNameId_RowId = lNewId
     End Property
 
@@ -277,11 +277,11 @@ Dim oRs As ADODB.RecordSet
         .sqlString = "usp_EracNumOfClaimsRequired_Payer"
         .Parameters("@pConceptId") = Me.ConceptID
         .Parameters("@pPayerNameId") = Me.PayerNameId
-        .Parameters("@pRequirementId") = Me.Concept.RequirementRuleObj.Id
+        .Parameters("@pRequirementId") = Me.Concept.RequirementRuleObj.ID
         
         Set oRs = .ExecuteRS
         If .GotData = False Then
-            LogMessage strProcName, "ERROR", "Problem finding required claims - look in " & .sqlString, "Req Rule ID: " & CStr(Me.Concept.RequirementRuleObj.Id) & " " & Me.ConceptID & " Payer: " & CStr(Me.PayerNameId)
+            LogMessage strProcName, "ERROR", "Problem finding required claims - look in " & .sqlString, "Req Rule ID: " & CStr(Me.Concept.RequirementRuleObj.ID) & " " & Me.ConceptID & " Payer: " & CStr(Me.PayerNameId)
             GoTo Block_Exit
         End If
     End With
@@ -1943,7 +1943,7 @@ Dim strProcName As String
 
     strProcName = ClassName & ".LoadFromID"
     coSourceTable.IdIsString = False
-    Id = lConceptIdPayerId_RowId
+    ID = lConceptIdPayerId_RowId
     LoadFromId = coSourceTable.LoadFromId(lConceptIdPayerId_RowId)
     WasInitialized = LoadFromId
 
@@ -2096,7 +2096,7 @@ Dim oAttachedFile As clsConceptDoc
 
     strProcName = ClassName & ".LoadAttachedDocs"
 
-    sSql = "SELECT * FROM v_CONCEPT_References WHERE ConceptID = '" & Me.Id & "' ORDER BY RefSequence ASC "
+    sSql = "SELECT * FROM v_CONCEPT_References WHERE ConceptID = '" & Me.ID & "' ORDER BY RefSequence ASC "
     Set oRs = GetRecordset(sSql, "V_CODE_Database")
     If oRs Is Nothing Then
 '        LogMessage strProcName, "WARNING", "Either no attached documents or there was a problem with the query / connection!", Me.ID
@@ -2149,7 +2149,7 @@ Dim oClaim As clsEracClaim
             " FROM CMS_AUDITORS_CLAIMS.dbo.AuditClm_Hdr H INNER JOIN ( " & _
                 " SELECT cnlyclaimnum, Adj_ConceptID as 'ConceptID' FROM CMS_AUDITORS_CODE.dbo.v_CONCEPT_ValidationSummary " & _
             " ) as AA ON AA.CnlyClaimNum = h.cnlyClaimNum " & _
-            " WHERE AA.ConceptID = '" & Me.Id & "'"
+            " WHERE AA.ConceptID = '" & Me.ID & "'"
 
     Set oRs = GetRecordset(sSql, "AuditClm_Hdr")
     If oRs Is Nothing Then

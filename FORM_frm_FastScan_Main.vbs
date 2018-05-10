@@ -63,7 +63,7 @@ Private Sub cmdClearAllCriteria_Click()
     Me.cmbPayerName = ""
     Me.txtPatFirstInit = ""
     Me.txtPatLastName = ""
-    Me.txtClmFromDt = ""
+    Me.txtclmFromDt = ""
     Me.txtPatDOB = ""
     Me.txtInstanceID = ""
     Me.txtPatCAN = ""
@@ -1341,7 +1341,7 @@ On Error GoTo Error_Handler
     strInstanceID = Nz(Me.txtInstanceID, "")
     strPatLastName = Nz(Me.txtPatLastName, "")
     strPatDOB = IIf(Nz(Me.txtPatDOB, "") <> "", Format(Me.txtPatDOB, "yyyy-mm-dd"), "")
-    strClmFromDt = IIf(Nz(Me.txtClmFromDt, "") <> "", Format(Me.txtClmFromDt, "yyyy-mm-dd"), "")
+    strClmFromDt = IIf(Nz(Me.txtclmFromDt, "") <> "", Format(Me.txtclmFromDt, "yyyy-mm-dd"), "")
     strPatCan = Nz(Me.txtPatCAN, "")
     strPatBic = Nz(Me.txtPatBIC, "")
     strMRNumber = Nz(Me.txtMRNumber, "")
@@ -1434,11 +1434,11 @@ On Error GoTo Error_Handler
                 End If
             End If
             
-            If Me.txtClmFromDt <> "" And IsNull(Me.txtClmFromDt) = False Then
-                If IsDate(Me.txtClmFromDt) = False Then
+            If Me.txtclmFromDt <> "" And IsNull(Me.txtclmFromDt) = False Then
+                If IsDate(Me.txtclmFromDt) = False Then
                     MsgBox "ClmFromDt Date must be a valid date."
                     Exit Sub
-                ElseIf CDate(Me.txtClmFromDt) >= Date Then
+                ElseIf CDate(Me.txtclmFromDt) >= Date Then
                     MsgBox "ClmFromDt cannot be a future date."
                     Exit Sub
                 End If
@@ -1622,7 +1622,7 @@ Private Sub ActivateFields()
     Me.txtPatFirstInit.Enabled = True
     Me.txtPatLastName.Enabled = True
     Me.txtPatDOB.Enabled = True
-    Me.txtClmFromDt.Enabled = True
+    Me.txtclmFromDt.Enabled = True
     Me.txtPatCAN.Enabled = True
     Me.txtPatBIC.Enabled = True
     Me.txtMRNumber.Enabled = True
@@ -1705,7 +1705,7 @@ Private Sub DeactivateFields()
     Me.txtPatFirstInit.Enabled = False
     Me.txtPatLastName.Enabled = False
     Me.txtPatDOB.Enabled = False
-    Me.txtClmFromDt.Enabled = False
+    Me.txtclmFromDt.Enabled = False
     Me.txtPatCAN.Enabled = False
     Me.txtPatBIC.Enabled = False
     Me.txtMRNumber.Enabled = False
