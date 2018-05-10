@@ -1,0 +1,3 @@
+SELECT PayerNameID, PayerName
+FROM XREF_PAYERNAMES
+WHERE PayerNameID = 1000;

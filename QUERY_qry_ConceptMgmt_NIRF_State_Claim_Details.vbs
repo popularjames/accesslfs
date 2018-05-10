@@ -1,0 +1,5 @@
+SELECT XREF_State.State AS ConceptState, RPT_SELECT_Automated_Claims.ConceptID, XREF_State.StateDesc AS StateName, Count(RPT_SELECT_Automated_Claims.CnlyClaimNum) AS ClaimCount, Sum(RPT_SELECT_Automated_Claims.Adj_ProjectedSavings) AS ClaimValue, Null AS ClaimCountSample, Null AS ClaimValueState, RPT_SELECT_Automated_Claims.DataType AS Reference, XREF_PAYERNAMES.PayerNameId, RPT_SELECT_Automated_Claims.SelectCd
+FROM (RPT_SELECT_Automated_Claims INNER JOIN XREF_State ON RPT_SELECT_Automated_Claims.ProvStCd = XREF_State.State) INNER JOIN XREF_PAYERNAMES ON RPT_SELECT_Automated_Claims.PayerName = XREF_PAYERNAMES.PayerName
+GROUP BY XREF_State.State, RPT_SELECT_Automated_Claims.ConceptID, XREF_State.StateDesc, Null, Null, RPT_SELECT_Automated_Claims.DataType, XREF_PAYERNAMES.PayerNameId, RPT_SELECT_Automated_Claims.SelectCd
+HAVING (((Count(RPT_SELECT_Automated_Claims.CnlyClaimNum))<>0) AND ((Sum(RPT_SELECT_Automated_Claims.Adj_ProjectedSavings))<>0) AND ((RPT_SELECT_Automated_Claims.SelectCd)="AVAILABLE"))
+ORDER BY XREF_State.State, Count(RPT_SELECT_Automated_Claims.CnlyClaimNum) DESC , Sum(RPT_SELECT_Automated_Claims.Adj_ProjectedSavings) DESC;

@@ -1,0 +1,3 @@
+SELECT *
+FROM GENERAL_Tabs
+WHERE AccessForm="frm_REPORT_Main";

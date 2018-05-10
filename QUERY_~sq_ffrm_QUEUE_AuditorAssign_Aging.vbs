@@ -1,0 +1,2 @@
+SELECT DISTINCTROW *
+FROM v_QUEUE_MN_Aging_Pivot;

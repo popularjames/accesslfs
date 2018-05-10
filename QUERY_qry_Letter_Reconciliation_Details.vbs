@@ -1,0 +1,4 @@
+SELECT LETTER_Reconciliation_Tool.ProvNum, LETTER_Reconciliation_Tool.RowNum, LETTER_Reconciliation_Tool.DocNum, LETTER_Reconciliation_Tool.DocName, LETTER_Reconciliation_Tool.InstanceId, LETTER_Reconciliation_Tool.ProvName, qry_LETTER_Reconciliation_Tool.CountOfRowNum
+FROM LETTER_Reconciliation_Tool INNER JOIN qry_LETTER_Reconciliation_Tool ON LETTER_Reconciliation_Tool.ProvNum = qry_LETTER_Reconciliation_Tool.ProvNum
+WHERE (((qry_LETTER_Reconciliation_Tool.CountOfRowNum)>1))
+ORDER BY LETTER_Reconciliation_Tool.ProvNum;

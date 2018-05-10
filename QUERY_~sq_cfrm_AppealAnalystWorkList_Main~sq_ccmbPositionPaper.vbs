@@ -1,0 +1,2 @@
+SELECT DISTINCT PP
+FROM v_AppealHearingAnalystWorkList_CSTemplate;

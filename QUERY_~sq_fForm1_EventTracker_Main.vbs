@@ -1,0 +1,2 @@
+SELECT DISTINCTROW *
+FROM _Settings;

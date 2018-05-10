@@ -1,0 +1,3 @@
+SELECT *
+FROM PROV_Address
+WHERE 1=2;

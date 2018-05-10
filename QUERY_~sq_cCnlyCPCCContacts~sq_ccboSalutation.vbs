@@ -1,0 +1,2 @@
+SELECT salutation
+FROM vCPuMasterSalutations;

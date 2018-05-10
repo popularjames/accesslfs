@@ -1,0 +1,2 @@
+SELECT GENERAL_Tabs_Linked_ProfileIDs.RowID, GENERAL_Tabs_Linked_ProfileIDs.ProfileID
+FROM GENERAL_Tabs_Linked_ProfileIDs;

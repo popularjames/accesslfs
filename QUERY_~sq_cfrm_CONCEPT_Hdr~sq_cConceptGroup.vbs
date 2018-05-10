@@ -1,0 +1,3 @@
+SELECT DISTINCT ConceptGroup
+FROM CONCEPT_Hdr
+ORDER BY ConceptGroup;

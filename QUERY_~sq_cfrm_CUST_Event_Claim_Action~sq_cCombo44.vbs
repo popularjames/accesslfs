@@ -1,0 +1,4 @@
+SELECT userid
+FROM ADMIN_User
+WHERE LockIND = "N"
+ORDER BY UserID;

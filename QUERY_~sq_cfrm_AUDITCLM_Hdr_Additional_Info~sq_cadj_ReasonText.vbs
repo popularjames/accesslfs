@@ -1,0 +1,4 @@
+SELECT XREF_Auditclm_Hdr_AdditionalInfo_Reason.ReasonCode, XREF_Auditclm_Hdr_AdditionalInfo_Reason.ReasonDesc, *
+FROM XREF_Auditclm_Hdr_AdditionalInfo_Reason
+WHERE (((XREF_Auditclm_Hdr_AdditionalInfo_Reason.ReasonGroup)=[Form]![adj_ReasonText_group]))
+ORDER BY XREF_Auditclm_Hdr_AdditionalInfo_Reason.ReasonDesc;

@@ -1,0 +1,2 @@
+SELECT DISTINCTROW *
+FROM tmp_Local_Copy;

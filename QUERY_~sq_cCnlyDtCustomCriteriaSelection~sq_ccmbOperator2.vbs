@@ -1,0 +1,2 @@
+SELECT CnlyDtDupCriteriaOperator2.Operator
+FROM CnlyDtDupCriteriaOperator2;

@@ -1,0 +1,2 @@
+SELECT ReasonDetailCust.ClientClaimCode, ReasonDetailCust.ClientReason
+FROM ReasonDetailCust;

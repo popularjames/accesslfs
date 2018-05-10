@@ -1,0 +1,2 @@
+SELECT UserID
+FROM ADMIN_User_Account;

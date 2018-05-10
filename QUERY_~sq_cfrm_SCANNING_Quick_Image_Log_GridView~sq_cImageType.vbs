@@ -1,0 +1,3 @@
+SELECT *
+FROM SCANNING_XREF_ImageType
+WHERE Active = 'Y';

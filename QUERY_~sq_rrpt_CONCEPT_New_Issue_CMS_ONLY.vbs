@@ -1,0 +1,2 @@
+SELECT DISTINCTROW *
+FROM v_CONCEPT_NewIssueProposal_NEW;

@@ -1,0 +1,2 @@
+SELECT CONCEPT_XREF_Level.ConceptLevel, CONCEPT_XREF_Level.LevelDescription
+FROM CONCEPT_XREF_Level;

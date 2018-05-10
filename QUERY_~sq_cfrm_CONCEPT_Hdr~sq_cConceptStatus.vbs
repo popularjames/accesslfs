@@ -1,0 +1,2 @@
+SELECT CONCEPT_XREF_Status.ConceptStatus, CONCEPT_XREF_Status.StatusDescription
+FROM CONCEPT_XREF_Status;

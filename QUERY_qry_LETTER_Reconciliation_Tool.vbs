@@ -1,0 +1,3 @@
+SELECT LETTER_Reconciliation_Tool.ProvNum, Count(LETTER_Reconciliation_Tool.RowNum) AS CountOfRowNum
+FROM LETTER_Reconciliation_Tool
+GROUP BY LETTER_Reconciliation_Tool.ProvNum;

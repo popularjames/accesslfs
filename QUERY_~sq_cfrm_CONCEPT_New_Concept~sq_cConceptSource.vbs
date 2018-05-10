@@ -1,0 +1,2 @@
+SELECT CONCEPT_XREF_Source.ConceptSource, CONCEPT_XREF_Source.ConceptSourceDesc
+FROM CONCEPT_XREF_Source;

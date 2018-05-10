@@ -1,0 +1,2 @@
+SELECT CnlyScreensTotalsCalculationsAggr.AggregateID, CnlyScreensTotalsCalculationsAggr.AggregateName
+FROM CnlyScreensTotalsCalculationsAggr;

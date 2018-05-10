@@ -1,0 +1,2 @@
+SELECT *
+FROM v_ALJ_732_Form;

@@ -1,0 +1,2 @@
+SELECT PayerName, Days031to045Amt, Days046to060Amt, Days061to090Amt, Days091to120Amt, Days121to180Amt, Days181to365Amt, Days366to999Amt
+FROM RPT_R0051M;

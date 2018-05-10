@@ -1,0 +1,3 @@
+SELECT MSysIMEXDataTypes.DataTypeID, MSysIMEXDataTypes.DataTypeName
+FROM MSysIMEXDataTypes
+ORDER BY MSysIMEXDataTypes.DataTypeName;

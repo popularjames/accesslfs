@@ -1,0 +1,2 @@
+SELECT DISTINCTROW *
+FROM ADMIN_User_Profile;

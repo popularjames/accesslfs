@@ -1,0 +1,2 @@
+SELECT CONCEPT_XREF_ProviderList.ProvType, CONCEPT_XREF_ProviderList.ProviderDesc
+FROM CONCEPT_XREF_ProviderList;

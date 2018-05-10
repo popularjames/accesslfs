@@ -1,0 +1,4 @@
+SELECT *
+FROM v_SCANNING_Prov_Info
+WHERE AccountID=1
+ORDER BY ProvNum;

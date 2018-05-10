@@ -1,0 +1,2 @@
+SELECT GENERAL_Tabs_Linked_ProfileIDs.*
+FROM GENERAL_Tabs_Linked_ProfileIDs;

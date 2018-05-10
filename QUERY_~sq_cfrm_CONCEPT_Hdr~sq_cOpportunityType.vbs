@@ -1,0 +1,2 @@
+SELECT CONCEPT_XREF_Opportunity.OpportunityType, CONCEPT_XREF_Opportunity.OpportunityDescription
+FROM CONCEPT_XREF_Opportunity;

@@ -1,0 +1,3 @@
+SELECT ItemValue, ItemDesc
+FROM AuditsUserFieldsLists
+WHERE FieldID={guid {FFFFFFFF-0300-0300-FACE-0000FFFFFFFF}};

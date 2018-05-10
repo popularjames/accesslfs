@@ -1,0 +1,2 @@
+SELECT v_qa_review_worktable_Unsubmitted.IcdversionCDflag
+FROM v_qa_review_worktable_Unsubmitted;

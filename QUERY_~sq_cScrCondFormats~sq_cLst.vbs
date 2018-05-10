@@ -1,0 +1,3 @@
+SELECT CnlyScreensCondFormats.CondFormatID, CnlyScreensCondFormats.FormatName
+FROM CnlyScreensCondFormats
+ORDER BY CnlyScreensCondFormats.FormatName;

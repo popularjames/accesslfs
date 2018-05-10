@@ -1,0 +1,2 @@
+SELECT DISTINCTROW *
+FROM GENERAL_Tabs_Linked_ProfileIDs;

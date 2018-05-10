@@ -1,0 +1,2 @@
+SELECT DISTINCT Participant
+FROM v_AppealHearingDocumentsWorkList;

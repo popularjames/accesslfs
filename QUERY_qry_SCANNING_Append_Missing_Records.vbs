@@ -1,0 +1,4 @@
+INSERT INTO SCANNING_Image_Log_Tmp ( ScannedDt, CnlyClaimNum, ICN, CnlyProvID, ProvNum, AuditNum, ImageType, ImageName, ReceivedDt, PageCnt, ReceivedMeth, ReviewType, ScanOperator, ScanStation, LocalPath, ImagePath, ErrMsg, AccountID )
+SELECT LOCAL_IMAGE_LOG_TMP.ScannedDt, LOCAL_IMAGE_LOG_TMP.CnlyClaimNum, LOCAL_IMAGE_LOG_TMP.ICN, LOCAL_IMAGE_LOG_TMP.CnlyProvID, LOCAL_IMAGE_LOG_TMP.ProvNum, LOCAL_IMAGE_LOG_TMP.AuditNum, LOCAL_IMAGE_LOG_TMP.ImageType, LOCAL_IMAGE_LOG_TMP.ImageName, CDate(Format([scanneddt],"mm-dd-yyyy")) AS REV_DT, LOCAL_IMAGE_LOG_TMP.PageCnt, LOCAL_IMAGE_LOG_TMP.ReceivedMeth, LOCAL_IMAGE_LOG_TMP.ReviewType, LOCAL_IMAGE_LOG_TMP.ScanOperator, LOCAL_IMAGE_LOG_TMP.ScanStation, LOCAL_IMAGE_LOG_TMP.LocalPath, LOCAL_IMAGE_LOG_TMP.ImagePath, LOCAL_IMAGE_LOG_TMP.ErrMsg, LOCAL_IMAGE_LOG_TMP.AccountID
+FROM LOCAL_IMAGE_LOG_TMP
+WHERE (((LOCAL_IMAGE_LOG_TMP.PageCnt)>0));

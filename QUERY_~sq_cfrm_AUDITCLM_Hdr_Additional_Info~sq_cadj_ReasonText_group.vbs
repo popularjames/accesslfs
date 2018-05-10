@@ -1,0 +1,3 @@
+SELECT XREF_Auditclm_Hdr_AdditionalInfo_Reason_Group.ReasonGroup, *
+FROM XREF_Auditclm_Hdr_AdditionalInfo_Reason_Group
+ORDER BY XREF_Auditclm_Hdr_AdditionalInfo_Reason_Group.ReasonGroup DESC;

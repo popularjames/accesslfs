@@ -1,3 +1,0 @@
-SELECT DISTINCT ReportingGroup AS Level1
-FROM REPORT_Hdr
-ORDER BY 1;

@@ -1,0 +1,2 @@
+SELECT *
+FROM v_SCANNING_Claim_Info;

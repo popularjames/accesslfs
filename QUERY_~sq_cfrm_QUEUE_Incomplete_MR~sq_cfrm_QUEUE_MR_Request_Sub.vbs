@@ -1,0 +1,3 @@
+SELECT *
+FROM QUEUE_MR_Request_Fax
+ORDER BY ICN;

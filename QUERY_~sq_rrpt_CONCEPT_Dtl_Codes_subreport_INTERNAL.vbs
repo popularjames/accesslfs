@@ -1,0 +1,2 @@
+SELECT DISTINCTROW *
+FROM v_CONCEPT_NIRF_Codes_Rpt_Internal;

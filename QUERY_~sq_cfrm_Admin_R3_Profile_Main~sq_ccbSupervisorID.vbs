@@ -1,0 +1,3 @@
+SELECT SupervisorID
+FROM Admin_Supervisor_SupervisorType
+ORDER BY SupervisorID;

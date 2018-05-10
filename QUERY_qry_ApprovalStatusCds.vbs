@@ -1,0 +1,2 @@
+SELECT XREF_CnlyAdjApprovalStatus.ApprovalStatusCd, XREF_CnlyAdjApprovalStatus.ApprovalStatusShrtNm, XREF_CnlyAdjApprovalStatus.ApprovalStatusTxt
+FROM XREF_CnlyAdjApprovalStatus;

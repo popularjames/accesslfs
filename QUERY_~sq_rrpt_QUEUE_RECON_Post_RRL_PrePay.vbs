@@ -1,0 +1,2 @@
+SELECT DISTINCTROW *
+FROM v_FAX_Letter_Post_TD;

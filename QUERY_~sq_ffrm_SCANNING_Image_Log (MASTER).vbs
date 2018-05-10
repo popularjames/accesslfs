@@ -1,0 +1,3 @@
+SELECT *
+FROM SCANNING_Image_Log_Tmp
+WHERE AccountID=1;

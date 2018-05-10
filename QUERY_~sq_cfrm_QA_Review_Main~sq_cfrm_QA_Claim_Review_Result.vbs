@@ -1,0 +1,3 @@
+SELECT *
+FROM QA_Review_Worktable
+WHERE SeqNo = 1 and CnlyClaimNum = '215194006315040012475923104211';

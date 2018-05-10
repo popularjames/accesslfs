@@ -1,0 +1,2 @@
+SELECT AggregateID, AggregateName
+FROM SCR_ScreensTotalsCalculationsAggr;

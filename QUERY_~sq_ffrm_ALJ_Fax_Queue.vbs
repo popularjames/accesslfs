@@ -1,0 +1,2 @@
+SELECT DISTINCTROW *
+FROM v_ALJ_Fax_Queue_Pkg;

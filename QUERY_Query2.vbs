@@ -1,0 +1,3 @@
+SELECT *
+FROM CONCEPT_References
+WHERE ConceptID='CM_C0001';

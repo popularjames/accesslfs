@@ -1,0 +1,3 @@
+SELECT CnlyScreensCalculations.CalcID, CnlyScreensCalculations.CalcName
+FROM CnlyScreensCalculations
+ORDER BY CnlyScreensCalculations.CalcName;
